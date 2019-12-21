@@ -1,5 +1,5 @@
 package com.mbrdi.sfgpetclinic.model;
 
-public class PetType {
+public class Vet extends Person {
 
 }
