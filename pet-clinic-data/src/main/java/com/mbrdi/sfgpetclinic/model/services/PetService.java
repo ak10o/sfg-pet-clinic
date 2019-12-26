@@ -1,15 +1,8 @@
 package com.mbrdi.sfgpetclinic.model.services;
 
-import java.util.Set;
 
-import com.mbrdi.sfgpetclinic.model.Owner;
 import com.mbrdi.sfgpetclinic.model.Pet;
 
-public interface PetService {
+public interface PetService extends CrudService<Pet, Long>{
 
-	Pet findById(Long id);
-
-	Set<Pet> findAll();
-
-	Owner save(Pet pet);
 }
