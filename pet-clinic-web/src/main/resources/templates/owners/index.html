@@ -5,5 +5,19 @@
 </head>
 <body>
 <h1 th:text = "'List of Owners'">Owner list</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+    </tr>
+    <!-- the value must be in double quotes -->
+    <tr th:each="owner:${owners}">
+    	<td th:text= "${owner.id}">21</td>
+    	<td th:text= "${owner.firstName}">Joe</td>
+    	<td th:text= "${owner.lastName}">Buck</td>
+    </tr>
+</table>
 </body>
 </html>
