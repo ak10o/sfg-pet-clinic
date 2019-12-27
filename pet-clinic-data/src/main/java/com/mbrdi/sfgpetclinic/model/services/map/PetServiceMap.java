@@ -3,10 +3,9 @@ package com.mbrdi.sfgpetclinic.model.services.map;
 import java.util.Set;
 
 import com.mbrdi.sfgpetclinic.model.Pet;
-import com.mbrdi.sfgpetclinic.model.services.CrudService;
+import com.mbrdi.sfgpetclinic.model.services.PetService;
 
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long>{
-
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService{
 	
 	@Override
 	public Pet save(Pet object) {
