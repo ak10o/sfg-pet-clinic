@@ -7,8 +7,6 @@ import com.mbrdi.sfgpetclinic.model.Owner;
 import com.mbrdi.sfgpetclinic.model.Vet;
 import com.mbrdi.sfgpetclinic.model.services.OwnerService;
 import com.mbrdi.sfgpetclinic.model.services.VetService;
-import com.mbrdi.sfgpetclinic.model.services.map.OwnerServiceMap;
-import com.mbrdi.sfgpetclinic.model.services.map.VetServiceMap;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -17,11 +15,13 @@ public class DataLoader implements CommandLineRunner {
 	
 	private final VetService vetService;
 	
-	 public DataLoader() {
-		ownerService = new OwnerServiceMap();
-		vetService = new VetServiceMap();
+	public DataLoader(OwnerService ownerService, VetService vetService) {
+		this.ownerService = ownerService;
+		this.vetService = vetService;
 	}
-	
+
+
+
 	@Override
 	public void run(String... args) throws Exception {
 		
