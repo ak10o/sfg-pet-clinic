@@ -1,4 +1,4 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
 <head>
     <meta charset="UTF-8"/>
     <title>Pet clinic index</title>
@@ -6,6 +6,12 @@
 <body>
 <!-- If we use as "Index page" then it will give an error since it will evaluate as expression.
 So to avoid it we have used inside a single quote -->
-<h1 th:text = "'Index Page'">Index Page</h1>
+<!--<h1 th:text = "'Index Page'">Index Page</h1>-->
+<h2 th:text="#{welcome}">Welcome</h2>
+<div class="row">
+        <div class="col-md-12">
+          <img class="img-responsive" src="../static/resources/images/pets.png" th:src="@{/resources/images/pets.png}"/>
+        </div>
+    </div>
 </body>
 </html>
