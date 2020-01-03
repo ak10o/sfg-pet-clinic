@@ -1,4 +1,4 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout::layout(~{::body},'owners')}">
 <head>
     <meta charset="UTF-8"/>
     <title>Owners Index Page</title>
@@ -6,11 +6,11 @@
 <body>
 <h1 th:text = "'List of Owners'">Owner list</h1>
 
-<table>
+<table class="table table-striped">
     <tr>
-        <th>ID</th>
-        <th>FirstName</th>
-        <th>LastName</th>
+        <th style="width: 150px;">ID</th>
+        <th style="width: 150px;">FirstName</th>
+        <th style="width: 150px;">LastName</th>
     </tr>
     <!-- the value must be in double quotes -->
     <tr th:each="owner:${owners}">
