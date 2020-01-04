@@ -8,7 +8,7 @@ import com.mbrdi.sfgpetclinic.model.Owner;
 import com.mbrdi.sfgpetclinic.model.services.OwnerService;
 
 @Service
-public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService{
+public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService{
 
 	@Override
 	public Owner save(Owner object) {
