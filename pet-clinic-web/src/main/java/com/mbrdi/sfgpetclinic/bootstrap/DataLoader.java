@@ -1,9 +1,12 @@
 package com.mbrdi.sfgpetclinic.bootstrap;
 
+import java.time.LocalDate;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.mbrdi.sfgpetclinic.model.Owner;
+import com.mbrdi.sfgpetclinic.model.Pet;
 import com.mbrdi.sfgpetclinic.model.PetType;
 import com.mbrdi.sfgpetclinic.model.Vet;
 import com.mbrdi.sfgpetclinic.model.services.OwnerService;
@@ -27,11 +30,11 @@ public class DataLoader implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		
 		PetType dog = new PetType();
-		dog.setName("Rusty");
+		dog.setName("Dog");
 		PetType savedDogPetType = petTypeService.save(dog);
 		
 		PetType cat = new PetType();
-		cat.setName("kitty");
+		cat.setName("Cat");
 		PetType savedcatPetType = petTypeService.save(cat);
 		
 		System.out.println("Loaded petType");
@@ -39,13 +42,33 @@ public class DataLoader implements CommandLineRunner {
 		Owner owner = new Owner();
 		owner.setFirstName("Salman");
 		owner.setLastName("khan");
+		owner.setAddress("Byrappa layout");
+		owner.setCity("Bengaluru");
+		owner.setTelephone("1234567819");
 		
+		Pet salmanPet = new Pet();
+		salmanPet.setPetType(savedDogPetType);
+		salmanPet.setOwner(owner);
+		salmanPet.setBirthDate(LocalDate.now());
+		salmanPet.setName("Rusty");
+		
+		owner.getPets().add(salmanPet);
 		ownerService.save(owner);
 		
 		Owner owner1 = new Owner();
 		owner1.setFirstName("Shahrukh");
 		owner1.setLastName("khan");
-
+		owner1.setAddress("Vinayaka layout");
+		owner1.setCity("Bengaluru");
+		owner1.setTelephone("2134567819");
+		
+		Pet shahrukhPet = new Pet();
+		shahrukhPet.setPetType(savedcatPetType);
+		shahrukhPet.setOwner(owner1);
+		shahrukhPet.setBirthDate(LocalDate.now());
+		shahrukhPet.setName("Kitty");
+		
+		owner1.getPets().add(shahrukhPet);
 		ownerService.save(owner1);
 		
 		System.out.println("Loaded owners");

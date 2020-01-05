@@ -1,12 +1,14 @@
 package com.mbrdi.sfgpetclinic.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Owner extends Person {
 
 	private static final long serialVersionUID = 1L;
 
-	private Set<Pet> pets;
+	// to avoid nullPointerException
+	private Set<Pet> pets = new HashSet<Pet>();
 	private String address;
 	private String city;
 	private String telephone;
