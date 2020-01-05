@@ -4,14 +4,33 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
+import com.mbrdi.sfgpetclinic.model.Speciality;
 import com.mbrdi.sfgpetclinic.model.Vet;
+import com.mbrdi.sfgpetclinic.model.services.SpecialityService;
 import com.mbrdi.sfgpetclinic.model.services.VetService;
 
 @Service
 public class VetMapService extends AbstractMapService<Vet, Long> implements VetService{
 
-	@Override
+	private SpecialityService specialityService;
+	
+	public VetMapService(SpecialityService specialityService) {
+	this.specialityService = specialityService;
+}
+	
+@Override
 	public Vet save(Vet object) {
+		
+		if ( object.getSpecialities().size() > 0 ) {
+			// it make sures that the id is not null. if id is null then we are using getNextId
+			// method of abstractMapService to generate the id.
+			object.getSpecialities().forEach(speciality -> {
+				if (speciality.getId() == null) {
+					Speciality savedSpeciality = specialityService.save(speciality);
+					speciality.setId(savedSpeciality.getId());
+				}
+			});
+		}
 		return super.save( object);
 	}
 	
